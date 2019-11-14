@@ -1,6 +1,6 @@
 #artist has many songs
 #song belongs to artist
-
+#artist has many genre through songs
 require 'pry'
 class Artist
   attr_accessor :name
@@ -38,5 +38,9 @@ class Artist
     # @songs << song_obj unless @songs.include?(song_obj)
 
     @songs << song_obj unless @songs.detect {|s_obj| s_obj == song_obj}
+  end
+
+  def genres
+    @songs.collect{|s_obj| s_obj.genre}.uniq
   end
 end
